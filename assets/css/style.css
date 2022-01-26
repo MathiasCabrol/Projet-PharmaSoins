@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans&display=swap');
+
+:root {
+    --title-font-family : 'Abril Fatface', cursive;
+    --main-font-family : 'Noto Sans', sans-serif;
+    --main-font-size : 14px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: var(--title-font-family);
+    color: white;
+    font-size: 40px;
+    width: fit-content;
+    margin: 40px 0;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    
+}
+
+.logo {
+    width: 8em;
+    height: auto;
+    border-radius: 100px;
+}
+
+.flex-container p, h2 {
+    text-align: center;
+    font-family: var(--main-font-family);
+}
+
+.flex-container h2 {
+    font-size: 20px;
+    line-height: 0em;
+    margin-top: 40px;
+}
+
+.flex-container p {
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+body {
+    background: url(../image/wave.svg) top no-repeat;
+}
+
+.cardsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 14em;
+    width: 13em;
+    border: 2px solid #86DC3C;
+    border-radius: 20px;
+    background: url(../image/cardBackground.svg) top no-repeat;
+    background-size: 110%;
+}
+
+.card h3 {
+    font-family: var(--main-font-family);
+    font-size: 14px;
+}
+
+.card button {
+    background-color: #86DC3C;
+    color: white;
+    border-radius: 10px;
+    width: 8em;
+    height: 2em;
+    border: none;
+    font-size: 16px;
+}
+
+.card button:hover {
+    background-color: #22780f;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    background-size: 120%;
+    border: 2px solid #22780f;
+}
+
+
+
+
