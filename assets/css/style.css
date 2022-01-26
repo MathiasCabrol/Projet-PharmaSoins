@@ -3,7 +3,8 @@
 :root {
     --title-font-family : 'Abril Fatface', cursive;
     --main-font-family : 'Noto Sans', sans-serif;
-    --main-font-size : 14px;
+    --main-color : #86DC3C;
+    --alternative-color : #22780f;
 }
 
 .flex-container {
@@ -21,7 +22,14 @@ h1 {
     margin: 40px 0;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
-    
+}
+
+@media (max-width: 767px) {
+    h1 {
+        color: black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
 }
 
 .logo {
@@ -63,7 +71,7 @@ body {
     align-items: center;
     height: 14em;
     width: 13em;
-    border: 2px solid #86DC3C;
+    border: 2px solid var(--main-color);
     border-radius: 20px;
     background: url(../image/cardBackground.svg) top no-repeat;
     background-size: 110%;
@@ -75,7 +83,7 @@ body {
 }
 
 .card button {
-    background-color: #86DC3C;
+    background-color: var(--main-color);
     color: white;
     border-radius: 10px;
     width: 8em;
@@ -85,14 +93,16 @@ body {
 }
 
 .card button:hover {
-    background-color: #22780f;
+    background-color: var(--alternative-color);
+    cursor: pointer;
 }
 
 .card:hover {
     transform: scale(1.1);
     background-size: 120%;
-    border: 2px solid #22780f;
+    border: 2px solid var(--alternative-color);
 }
+
 
 
 

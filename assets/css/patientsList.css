@@ -1,0 +1,59 @@
+.tableContainer {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+table {
+    width: 90%;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+td, th {
+    width: 20%;
+    text-align: center;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+button {
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 10px;
+    width: 8em;
+    height: 2em;
+    border: none;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--alternative-color);
+    cursor: pointer;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+
+}
+
+.menu {
+    transform: scale(1.5);
+}
