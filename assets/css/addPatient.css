@@ -64,3 +64,14 @@
 .confirm {
     margin-top: 0;
 }
+
+.returnButton {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: white;
+}
+
+.returnButton:hover {
+    color: var(--alternative-color);
+}

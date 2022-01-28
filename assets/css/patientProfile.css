@@ -1,0 +1,80 @@
+.patientContainer {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border: 2px solid var(--main-color);
+    border-radius: 20px;
+    background: url(../image/cardBackground.svg) top no-repeat;
+    height: auto;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .patientContainer {
+        width: 100%;
+    }
+}
+
+p {
+    font-family: var(--main-font-family);
+}
+
+.returnButton {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: white;
+}
+
+.returnButton:hover {
+    color: var(--alternative-color);
+}
+
+.modifyButton {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    border: none;
+    background-color: var(--alternative-color);
+    color: white;
+    border-radius: 10px;
+    height: 3em;
+    width: 3em;
+}
+
+.modifyButton:hover {
+    background-color: var(--main-color);
+    cursor: pointer;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    border: none;
+    background-color: var(--alternative-color);
+    color: white;
+    border-radius: 10px;
+    height: 3em;
+    width: 3em;
+}
+
+.deleteButton:hover {
+    background-color: var(--main-color);
+    cursor: pointer;
+}
+
+.colContainer {
+    padding-top: 100px;
+} 
+
+.firstParagraph {
+    margin-top: 100px;
+}
+
+p {
+    font-size: 14px;
+}

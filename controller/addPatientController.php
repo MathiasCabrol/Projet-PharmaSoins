@@ -1,5 +1,6 @@
 <?php
 
+require '../modele/PatientsClass.php';
 /**
  * Création des REGEX pour les formulaires
  */
@@ -10,9 +11,9 @@ $birthdateRegex = '/^(([0-2][0-9])||([3][0-1]))[\/](([1][0-2])||([0][0-9]))[\/](
 
 
 //Création d'un tableau vide qui contiendra les erreurs du formulaire
-$errorlist = [];
 
 if(isset($_POST['addPatient'])){
+    $errorlist = [];
 
     //Condition de test saisie nom
     if(isset($_POST['lastname'])){
@@ -67,6 +68,28 @@ if(isset($_POST['addPatient'])){
         }
     } else {
         $errorlist['phone'] = 'Merci d\'entrer un numéro de téléphone.';
+    }
+
+    if (count($errorlist) == 0) {
+        $patient = new Patients;
+        $patient->setLastname(htmlspecialchars($patientLastname));
+        $patient->setFirstname(htmlspecialchars($patientFirstname));
+        $patient->setBirthdate(htmlspecialchars($patientBirthdate));
+        $patient->setPhone(htmlspecialchars($patientPhone));
+        $patient->setMail(htmlspecialchars($patientMail));
+        $patient->formatDate();
+        if (!$patient->checkPatientIfExists()) {
+            if(!isset($_GET['patient'])){
+                $patient->addPatient();
+                header('location: patientsList.php');
+            } else {
+                $patient->updatePatient();
+                header('location: patientsProfile.php?patient=' . $patient->getLastname());
+            }
+            exit;
+        }else{
+            $errorlist['addPatient'] = 'Ce patient existe déjà';
+        }
     }
 }
 

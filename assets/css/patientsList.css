@@ -9,6 +9,7 @@
 
 table {
     width: 90%;
+    border: 1px solid black;
 }
 
 th {
@@ -19,6 +20,7 @@ th {
 td, th {
     width: 20%;
     text-align: center;
+    font-family: var(--main-font-family);
 }
 
 .buttonsContainer {
@@ -57,3 +59,27 @@ button:hover {
 .menu {
     transform: scale(1.5);
 }
+
+table tr:nth-child(odd){
+    background-color:var(--main-color);
+}
+
+table tr:nth-child(odd):hover{
+    background-color:var(--alternative-color);
+    color: white;
+}
+
+table tr:nth-child(even){
+    background-color: lightgray;
+}
+
+table tr:nth-child(even):hover{
+    background-color: gray;
+    color: white;
+}
+
+tr { 
+    cursor: pointer;
+ }
+
+

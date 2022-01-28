@@ -19,7 +19,7 @@
     <div class="cardsContainer">
         <div class="card patient">
             <h3>Ajouter un patient</h3>
-            <a href=""><button>+</button></a>
+            <a href="addPatient.php"><button>+</button></a>
         </div>
         <div class="card">
             <h3>Liste des patients</h3>

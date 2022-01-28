@@ -1,5 +1,5 @@
-<?php include '../modele/patientsQueries.php';
-
+<?php include '../modele/PatientsClass.php';
+    $patients = new Patients;
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -27,16 +27,16 @@
                     <th>Téléphone</th>
                 </tr>
                 <?php 
-                if(count($ClientsTableList) == 0){
+                if(count($patients->displayPatient()) == 0){
                     ?>
                 <tr>
                     <td colspan="5">Aucun client renseigné</td>
                 </tr>
                 <?php
                 } else {
-                foreach ($ClientsTableList as $client){
+                foreach ($patients->displayPatient() as $client){
                     ?>
-                <tr>
+                <tr onclick="window.location='patientProfile.php?patient=<?= $client->lastname ?>'">
                     <td><?= $client->lastname ?></td>
                     <td><?= $client->firstname ?></td>
                     <td><?= $client->birthdate ?></td>
