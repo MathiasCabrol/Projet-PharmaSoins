@@ -36,7 +36,7 @@
                 } else {
                 foreach ($patients->displayPatient() as $client){
                     ?>
-                <tr onclick="window.location='patientProfile.php?patient=<?= $client->lastname ?>'">
+                <tr onclick="window.location='patientProfile.php?patient=<?= $client->id ?>'">
                     <td><?= $client->lastname ?></td>
                     <td><?= $client->firstname ?></td>
                     <td><?= $client->birthdate ?></td>

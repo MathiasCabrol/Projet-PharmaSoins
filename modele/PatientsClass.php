@@ -64,27 +64,27 @@ class Patients
     }
 
     public function updatePatient() {
-        $query = 'UPDATE `patients` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone WHERE `lastname` = :previousname';
+        $query = 'UPDATE `patients` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone WHERE `id` = :previousid';
         $queryStatement = $this->db->prepare($query);
         $queryStatement->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
         $queryStatement->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
         $queryStatement->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
         $queryStatement->bindValue(':phone', $this->phone, PDO::PARAM_STR);
         $queryStatement->bindValue(':mail', $this->mail, PDO::PARAM_STR);
-        $queryStatement->bindValue(':previousname', $_GET['patient'], PDO::PARAM_STR);
+        $queryStatement->bindValue(':previousid', $_GET['patient'], PDO::PARAM_STR);
         return $queryStatement->execute();
     }
 
     public function displayPatient()
     {
-        $query = 'SELECT `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients`';
+        $query = 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients`';
         $queryStatement = $this->db->query($query);
         $clientsList = $queryStatement->fetchAll(PDO::FETCH_OBJ);
         return $clientsList;
     }
 
     public function displayPatientProfile() {
-        $query= 'SELECT `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` WHERE `lastname` = :patient';
+        $query= 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` WHERE `id` = :patient';
         $queryStatement = $this->db->prepare($query);
         $queryStatement->bindValue(':patient', $_GET['patient'], PDO::PARAM_STR);
         $queryStatement->execute();
@@ -120,5 +120,9 @@ class Patients
 
     public function getLastname(): string {
         return $this->lastname;
+    }
+
+    public function getId(): int {
+        return $this->id;
     }
 }
