@@ -63,7 +63,7 @@ class Patients
         return $check;
     }
 
-    public function updatePatient() {
+    public function updatePatient($previousId) {
         $query = 'UPDATE `patients` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone WHERE `id` = :previousid';
         $queryStatement = $this->db->prepare($query);
         $queryStatement->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
@@ -71,7 +71,7 @@ class Patients
         $queryStatement->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
         $queryStatement->bindValue(':phone', $this->phone, PDO::PARAM_STR);
         $queryStatement->bindValue(':mail', $this->mail, PDO::PARAM_STR);
-        $queryStatement->bindValue(':previousid', $_GET['patient'], PDO::PARAM_STR);
+        $queryStatement->bindValue(':previousid', $previousId, PDO::PARAM_STR);
         return $queryStatement->execute();
     }
 
@@ -83,13 +83,42 @@ class Patients
         return $clientsList;
     }
 
-    public function displayPatientProfile() {
+    public function displayPatientProfile($patientId) {
         $query= 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` WHERE `id` = :patient';
         $queryStatement = $this->db->prepare($query);
-        $queryStatement->bindValue(':patient', $_GET['patient'], PDO::PARAM_STR);
+        $queryStatement->bindValue(':patient', $patientId, PDO::PARAM_INT);
         $queryStatement->execute();
-        $patientProfileList = $queryStatement->fetchAll(PDO::FETCH_OBJ);
+        $patientProfileList = $queryStatement->fetch(PDO::FETCH_OBJ);
         return $patientProfileList;
+    }
+
+    public function searchPatient($lastName, $firstName) {
+        $query = 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` WHERE `lastname` lIKE CONCAT("%", :lastname, "%") OR `firstname` LIKE CONCAT("%", :firstname, "%")';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+        $queryStatement->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+        $queryStatement->execute();
+        $searchResults = $queryStatement->fetchAll(PDO::FETCH_OBJ);
+        return $searchResults;
+    }
+
+    public function countSearchedPatient($lastName, $firstName) {
+        $query = 'SELECT count(`id`) AS `results` FROM `patients` WHERE `lastname` lIKE CONCAT("%", :lastname, "%") OR `firstname` LIKE CONCAT("%", :firstname, "%")';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+        $queryStatement->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+        $queryStatement->execute();
+        $countResults = $queryStatement->fetch(PDO::FETCH_OBJ);
+        return $countResults;
+    }
+
+    public function displaySelectedAppointmentForm($patientId) {
+        $query = 'SELECT `lastname`, `firstname` FROM `patients` WHERE `id` = :patientId';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':patientId', $patientId, PDO::PARAM_STR);
+        $queryStatement->execute();
+        $patientSelected = $queryStatement->fetchAll(PDO::FETCH_OBJ); 
+        return $patientSelected;
     }
 
     public function setLastname(string $value): void

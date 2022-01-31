@@ -27,7 +27,7 @@
         </div>
         <div class="card">
             <h3>Ajouter un rendez-vous</h3>
-            <a href=""><button>+</button></a>
+            <a href="addAppointment.php"><button>+</button></a>
         </div>
         <div class="card">
             <h3>Liste des rendez-vous</h3>

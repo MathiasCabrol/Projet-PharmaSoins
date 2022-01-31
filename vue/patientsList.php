@@ -1,5 +1,4 @@
-<?php include '../modele/PatientsClass.php';
-    $patients = new Patients;
+<?php require '../controller/patient-list.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -27,14 +26,14 @@
                     <th>Téléphone</th>
                 </tr>
                 <?php 
-                if(count($patients->displayPatient()) == 0){
+                if(count($patientsList) == 0){
                     ?>
                 <tr>
                     <td colspan="5">Aucun client renseigné</td>
                 </tr>
                 <?php
                 } else {
-                foreach ($patients->displayPatient() as $client){
+                foreach ($patientsList as $client){
                     ?>
                 <tr onclick="window.location='patientProfile.php?patient=<?= $client->id ?>'">
                     <td><?= $client->lastname ?></td>

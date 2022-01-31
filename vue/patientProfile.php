@@ -1,6 +1,7 @@
 <?php 
- require '../controller/addPatientController.php';
- $patients = new Patients;
+ require '../controller/patient-profile.php';
+
+ var_dump($patientProfile);
  ?>
 
 
@@ -39,14 +40,12 @@
                 <i class="fas fa-exchange-alt fa-2x"></i>
             </button>
         </form>
-        <?php foreach ($patients->displayPatientProfile() as $clientInfo) {
-        ?>
-            <p class="firstParagraph">Nom : <?= $clientInfo->lastname ?></p>
-            <p>Prénom : <?= $clientInfo->firstname ?></p>
-            <p>Date de naissance : <?= $clientInfo->birthdate ?></p>
-            <p>Adresse e-mail : <?= $clientInfo->mail ?></p>
-            <p>Numéro de téléphone : <?= $clientInfo->phone ?></p>
-        <?php }
+            <p class="firstParagraph">Nom : <?= $patientProfile->lastname ?></p>
+            <p>Prénom : <?= $patientProfile->firstname ?></p>
+            <p>Date de naissance : <?= $patientProfile->birthdate ?></p>
+            <p>Adresse e-mail : <?= $patientProfile->mail ?></p>
+            <p>Numéro de téléphone : <?= $patientProfile->phone ?></p>
+        <?php 
         } else { 
             if(isset($_POST['undo'])){
                 unset($_POST['undo']);
@@ -56,25 +55,22 @@
                 <i class="fas fa-undo fa-2x"></i>
             </button>
             </form>
-            <?php foreach ($patients->displayPatientProfile() as $clientInfo) {
-            ?>
             <form class="colContainer" method="post" action="">
             <label for="lastname">Nom de famille</label>
-            <input placeholder="Dupont" type="text" name="lastname" value="<?= $clientInfo->lastname ?>">
+            <input placeholder="Dupont" type="text" name="lastname" value="<?= $patientProfile->lastname ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['lastname']) ? $errorlist['lastname'] : '' ?></p>
             <label for="firstname">Prénom</label>
-            <input placeholder="Jean" type="text" name="firstname" value="<?= $clientInfo->firstname ?>">
+            <input placeholder="Jean" type="text" name="firstname" value="<?= $patientProfile->firstname ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['firstname']) ? $errorlist['firstname'] : '' ?></p>
             <label for="birthdate">Date de naissance</label>
-            <input placeholder="02/03/1982" type="text" name="birthdate" value="<?= $clientInfo->birthdate ?>">
+            <input placeholder="02/03/1982" type="text" name="birthdate" value="<?= $patientProfile->birthdate ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['birthdate']) ? $errorlist['birthdate'] : '' ?></p>
             <label for="mail">E-mail</label>
-            <input placeholder="Dupont.jean@gmail.com" type="text" name="mail" value="<?= $clientInfo->mail ?>">
+            <input placeholder="Dupont.jean@gmail.com" type="text" name="mail" value="<?= $patientProfile->mail ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['mail']) ? $errorlist['mail'] : '' ?></p>
             <label for="phone">Téléphone</label>
-            <input placeholder="0645326735" type="text" name="phone" value="<?= $clientInfo->phone ?>">
+            <input placeholder="0645326735" type="text" name="phone" value="<?= $patientProfile->phone ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['phone']) ? $errorlist['phone'] : '' ?></p>
-            <?php } ?>
             <div>
                 <input class="confirm" type="submit" value="Confirmer" name="addPatient">
             </div>
