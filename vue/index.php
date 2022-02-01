@@ -31,7 +31,7 @@
         </div>
         <div class="card">
             <h3>Liste des rendez-vous</h3>
-            <a href=""><button>Consulter</button></a>
+            <a href="appointmentsList.php"><button>Consulter</button></a>
         </div>
     </div>
 </body>

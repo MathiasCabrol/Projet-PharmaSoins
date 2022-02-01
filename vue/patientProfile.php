@@ -1,7 +1,5 @@
 <?php 
  require '../controller/patient-profile.php';
-
- var_dump($patientProfile);
  ?>
 
 
@@ -15,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/addPatient.css">
-    <link rel="stylesheet" href="../assets/css/patientProfile.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <title>Profil patient</title>
 </head>
 
 <body>
@@ -24,7 +22,7 @@
     <div class="flex-container">
         <h1>Profil patient</h1>
     </div>
-    <div class="patientContainer">
+    <div class="profileContainer">
         <?php if(!empty($_POST['addPatient'])){
             unset($_POST['modify']);
             $_POST['undo'] = 'undo';

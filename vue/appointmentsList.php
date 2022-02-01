@@ -1,4 +1,4 @@
-<?php require '../controller/patient-list.php';
+<?php require '../controller/appointments-list.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -9,45 +9,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/list.css">
-    <title>Liste de patients</title>
+    <title>Liste des rendez-vous</title>
 </head>
 
 <body>
     <div class="flex-container">
-        <h1>Liste des patients</h1>
+        <h1>Liste des rendez-vous</h1>
     </div>
     <div class="tableContainer">
         <table>
+            <thead>
                 <tr>
+                    <th>Date</th>
+                    <th>Heure</th>
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Date de naissance</th>
-                    <th>E-mail</th>
                     <th>Téléphone</th>
                 </tr>
+            </thead>
+            <tbody>
                 <?php 
-                if(count($patientsList) == 0){
+                if(count($appointmentsList) == 0){
                     ?>
                 <tr>
-                    <td colspan="5">Aucun client renseigné</td>
+                    <td colspan="5">Aucun rendez-vous ajouté</td>
                 </tr>
                 <?php
                 } else {
-                foreach ($patientsList as $client){
+                foreach ($appointmentsList as $appointment){
                     ?>
-                <tr onclick="window.location='patientProfile.php?patient=<?= $client->id ?>'">
-                    <td><?= $client->lastname ?></td>
-                    <td><?= $client->firstname ?></td>
-                    <td><?= $client->birthdate ?></td>
-                    <td><?= $client->mail ?></td>
-                    <td><?= $client->phone ?></td>
+                <tr onclick="window.location='appointment.php?appointment=<?= $appointment->id ?>&patient=<?= $appointment->patientId ?>'">
+                    <td><?= date("d/m/Y",strtotime($appointment->dateHour)) ?></td>
+                    <td><?= date("H:i:s",strtotime($appointment->dateHour)) ?></td>
+                    <td><?= $appointment->lastname ?></td>
+                    <td><?= $appointment->firstname ?></td>
+                    <td><?= $appointment->phone ?></td>
                 </tr>
                 <?php }
                 } ?>
+            </tbody>
         </table>
     </div>
     <div class="buttonsContainer">
-        <a href="addPatient.php"><button>Ajouter patient</button></a>
+        <a href="addAppointment.php"><button>Ajouter rdv</button></a>
     </div>
     <div class="menuContainer">
     <a href="index.php"><button class="menu">Menu principal</button></a>

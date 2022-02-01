@@ -1,4 +1,4 @@
-.patientContainer {
+.profileContainer {
     margin-top: 120px;
     display: flex;
     flex-direction: column;
@@ -12,8 +12,16 @@
     position: relative;
 }
 
+.appoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 @media (max-width: 768px) {
-    .patientContainer {
+    .profileContainer {
         width: 100%;
     }
 }
@@ -81,4 +89,31 @@ p {
 
 .confirm {
     margin-bottom: 16px;
+}
+
+#appoForm > input {
+    color: black;
+    width: 14em;
+    height: 2em;
+    font-size: 14px;
+    margin: auto 0;
+}
+
+.confirm {
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 10px;
+    width: 8em;
+    height: 2em;
+    border: none;
+    font-size: 16px;
+}
+.confirm:hover {
+background-color: var(--alternative-color);
+cursor: pointer;
+}
+
+#appoForm > div {
+    text-align: center;
+    margin-top: 20px;
 }

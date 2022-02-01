@@ -1,0 +1,101 @@
+#appoContainer {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 20px;
+}
+
+h2 {
+    font-family: var(--maain-font-family);
+}
+
+.confirm {
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 10px;
+    width: 8em;
+    height: 2em;
+    border: none;
+    font-size: 16px;
+}
+.confirm:hover {
+background-color: var(--alternative-color);
+cursor: pointer;
+}
+
+.cardsContainer {
+    width: 100%;
+    height: 20em;
+    flex-wrap: wrap;
+}
+
+.card {
+    height: 100%;
+    width: 30%;
+}
+
+@media (max-width: 767px) {
+    .card {
+        width: 80%;
+        margin-top: 40px;
+    }
+}
+
+p {
+    line-height: 0;
+    margin: 0;
+}
+
+h3, h2, .cardsContainer {
+    margin-top: 60px;
+}
+
+h2 {
+    font-size: var(--main-font-size);
+}
+
+.returnButton {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: white;
+}
+
+.returnButton:hover {
+    color: var(--alternative-color);
+}
+
+#searchForm > input {
+    border: none;
+    border-bottom: 1px solid var(--main-color);
+    padding-bottom: 5px;
+}
+
+#searchForm > input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--alternative-color);
+}
+
+#searchForm > input:focus::placeholder {
+    color: transparent;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+#appoForm > input {
+    color: black;
+    width: 14em;
+    height: 2em;
+    font-size: 14px;
+    margin: auto 0;
+}
+
+.appoCard {
+    height: 16em;
+    position: fixed;
+    top: 50%;
+}
