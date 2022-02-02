@@ -63,7 +63,7 @@ class Patients
         return $check;
     }
 
-    public function updatePatient($previousId) {
+    public function updatePatient() {
         $query = 'UPDATE `patients` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone WHERE `id` = :previousid';
         $queryStatement = $this->db->prepare($query);
         $queryStatement->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
@@ -71,7 +71,7 @@ class Patients
         $queryStatement->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
         $queryStatement->bindValue(':phone', $this->phone, PDO::PARAM_STR);
         $queryStatement->bindValue(':mail', $this->mail, PDO::PARAM_STR);
-        $queryStatement->bindValue(':previousid', $previousId, PDO::PARAM_STR);
+        $queryStatement->bindValue(':previousid', $this->id, PDO::PARAM_STR);
         return $queryStatement->execute();
     }
 
@@ -83,13 +83,23 @@ class Patients
         return $clientsList;
     }
 
-    public function displayPatientProfile($patientId) {
+    public function displayPatientProfile():bool {
         $query= 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` WHERE `id` = :patient';
         $queryStatement = $this->db->prepare($query);
-        $queryStatement->bindValue(':patient', $patientId, PDO::PARAM_INT);
+        $queryStatement->bindValue(':patient', $this->id, PDO::PARAM_INT);
         $queryStatement->execute();
         $patientProfileList = $queryStatement->fetch(PDO::FETCH_OBJ);
-        return $patientProfileList;
+        if(is_object($patientProfileList)){
+            $this->lastname = $patientProfileList->lastname;
+            $this->firstname = $patientProfileList->firstname;
+            $this->birthdate = $patientProfileList->birthdate;
+            $this->mail = $patientProfileList->mail;
+            $this->phone = $patientProfileList->phone;
+            $check = true;
+        } else {
+            $check = false;
+        }
+        return $check;
     }
 
     public function searchPatient($lastName, $firstName) {
@@ -112,14 +122,25 @@ class Patients
         return $countResults;
     }
 
-    public function displaySelectedAppointmentForm($patientId) {
+    public function displaySelectedAppointmentForm() {
         $query = 'SELECT `lastname`, `firstname` FROM `patients` WHERE `id` = :patientId';
         $queryStatement = $this->db->prepare($query);
-        $queryStatement->bindValue(':patientId', $patientId, PDO::PARAM_STR);
+        $queryStatement->bindValue(':patientId', $this->id, PDO::PARAM_STR);
         $queryStatement->execute();
         $patientSelected = $queryStatement->fetchAll(PDO::FETCH_OBJ); 
         return $patientSelected;
     }
+
+    public function deletePatient () {
+        $query = 'DELETE FROM `patients` WHERE `patients`.`id` = :patientid';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':patientid', $this->id, PDO::PARAM_INT);
+        return $queryStatement->execute();
+    }
+
+    public function setId (int $value):void {
+        $this->id = $value;
+    } 
 
     public function setLastname(string $value): void
     {
@@ -149,6 +170,22 @@ class Patients
 
     public function getLastname(): string {
         return $this->lastname;
+    }
+
+    public function getFirstname(): string {
+        return $this->firstname;
+    }
+
+    public function getBirthdate(): string {
+        return $this->birthdate;
+    }
+
+    public function getMail(): string {
+        return $this->mail;
+    }
+
+    public function getPhone():string {
+        return $this->phone;
     }
 
     public function getId(): int {

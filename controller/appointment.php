@@ -2,4 +2,5 @@
 
 $appointments = new Appointments;
 
-$selectedAppointment = $appointments->displayAppointment($_GET['appointment']);
+$appointments->setId($_GET['appointment']);
+$selectedAppointment = $appointments->displayAppointment();

@@ -103,6 +103,17 @@ body {
     border: 2px solid var(--alternative-color);
 }
 
+.returnButton {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: white;
+}
+
+.returnButton:hover {
+    color: var(--alternative-color);
+}
+
 
 
 

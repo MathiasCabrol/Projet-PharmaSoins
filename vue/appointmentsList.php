@@ -7,12 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/list.css">
     <title>Liste des rendez-vous</title>
 </head>
 
 <body>
+        <a class="returnButton" href="index.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+
     <div class="flex-container">
         <h1>Liste des rendez-vous</h1>
     </div>
@@ -44,6 +47,10 @@
                     <td><?= $appointment->lastname ?></td>
                     <td><?= $appointment->firstname ?></td>
                     <td><?= $appointment->phone ?></td>
+                    <form method="post" action="appointmentsList.php">
+                    <td><input type="hidden" name="delete" value="<?= $appointment->id ?>">    
+                    <button type="submit" id="deleteButton">-</button></td>    
+                    </form>
                 </tr>
                 <?php }
                 } ?>
@@ -52,9 +59,6 @@
     </div>
     <div class="buttonsContainer">
         <a href="addAppointment.php"><button>Ajouter rdv</button></a>
-    </div>
-    <div class="menuContainer">
-    <a href="index.php"><button class="menu">Menu principal</button></a>
     </div>
 </body>
 

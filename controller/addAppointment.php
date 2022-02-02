@@ -15,18 +15,18 @@ if(isset($_POST['addAppointment'])){
     } else {
         $errorlist['dateHour'] = 'Merci d\'entrer une date et une heure.';
     }
-}
-
-    
 
     if (count($errorlist) == 0) {
         $appointment = new Appointments;
         $appointment->setDateHour(date("Y-m-d H:i:s",strtotime(htmlspecialchars($appointmentDateHour))));
         $result = $appointment->checkAppointmentIfExists();
         if ($result->number == 0) {
-            $appointment->addAppointment($_GET['patient']);
+            $appointment->setPatientId($_GET['patient']);
+            $appointment->addAppointment();
+            header('location: appointmentsList.php');
             exit;
         }else{
             $errorlist['addPatient'] = 'Ce patient existe déjà';
         }
     }
+}

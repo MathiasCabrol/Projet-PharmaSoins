@@ -47,19 +47,6 @@ button:hover {
     cursor: pointer;
 }
 
-.menuContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-
-}
-
-.menu {
-    transform: scale(1.5);
-}
-
 table tr:nth-child(odd){
     background-color:var(--main-color);
 }
@@ -81,5 +68,23 @@ table tr:nth-child(even):hover{
 tr { 
     cursor: pointer;
  }
+
+ table a {
+     text-decoration: none;
+     color: black;
+ }
+
+ table a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+#deleteButton {
+    width: 4em;
+    height: 2em;
+    background-color: red;
+    color: white;
+    padding: 0 5px;
+}
 
 

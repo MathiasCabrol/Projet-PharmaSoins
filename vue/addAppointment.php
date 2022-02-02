@@ -1,11 +1,10 @@
 <?php
 
-require '../controller/appointmentSearchBar.php';
-require '../controller/addAppointment.php';
-
-
 //Création de session pour sauvegarde des POST
 session_start();
+
+require '../controller/appointmentSearchBar.php';
+require '../controller/addAppointment.php';
 
 ?>
 
@@ -27,7 +26,7 @@ session_start();
 </head>
 
 <body>
-    <a class="returnButton" href="patientsList.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+    <a class="returnButton" href="index.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
     <div class="flex-container">
         <h1>Ajout de Rendez-vous</h1>
     </div>

@@ -19,7 +19,7 @@ require '../controller/addAppointment.php';
 </head>
 
 <body>
-    <a class="returnButton" href="appointmentsList.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+    <a class="returnButton" href="index.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
     <div class="flex-container">
         <h1>Rendez-vous séléctionné</h1>
     </div>

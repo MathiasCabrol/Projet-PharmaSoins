@@ -81,8 +81,9 @@ if(isset($_POST['addPatient'])){
                 $patient->addPatient();
                 header('location: patientsList.php');
             } else {
-                $patient->updatePatient($_GET['patient']);
-                header('location: patientProfile.php?patient=' . $_GET['patient']);
+                $patient->setId(htmlspecialchars($_GET['patient']));
+                $patient->updatePatient();
+                header('location: patientProfile.php?patient=' . htmlspecialchars($_GET['patient']));
             }
             exit;
         }else{
