@@ -81,6 +81,11 @@ require '../controller/patientsListSearch.php';
             }
          } ?>
         </table>
+    <div class="pagesContainer">
+        <form method="get" action="">
+            
+        </form>
+    </div>
     </div>
     <div class="buttonsContainer">
         <a href="addPatient.php"><button>Ajouter patient</button></a>

@@ -56,36 +56,6 @@ h2 {
     font-size: var(--main-font-size);
 }
 
-.returnButton {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    color: white;
-}
-
-.returnButton:hover {
-    color: var(--alternative-color);
-}
-
-#searchForm > input {
-    border: none;
-    border-bottom: 1px solid var(--main-color);
-    padding-bottom: 5px;
-}
-
-#searchForm > input:focus {
-    outline: none;
-    border-bottom: 1px solid var(--alternative-color);
-}
-
-#searchForm > input:focus::placeholder {
-    color: transparent;
-}
-
-#results {
-    margin-top: 20px;
-}
-
 #appoForm > input {
     color: black;
     width: 14em;
