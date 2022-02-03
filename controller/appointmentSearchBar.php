@@ -27,9 +27,7 @@ if (!empty($_SESSION['searchFirstName'])){
     $firstname = null;
 }
 
-//Création des variables pour affichage dans la vue
-$searchResults = $patients->searchPatient($lastname, $firstname);
-$countResults = $patients->countSearchedPatient($lastname, $firstname);
+require '../controller/searchBar.php';
 
 //Si le bouton d'ajout de rendez-vous est cliquée, affiche les informations du patient
 // En initialisant la variable patientId

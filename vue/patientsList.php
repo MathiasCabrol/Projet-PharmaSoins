@@ -1,4 +1,6 @@
-<?php require '../controller/patient-list.php';
+<?php 
+require '../controller/patient-list.php';
+require '../controller/patientsListSearch.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -10,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/list.css">
+    <link rel="stylesheet" href="../assets/css/searchBar.css">
     <title>Liste de patients</title>
 </head>
 
@@ -18,6 +21,14 @@
     <a class="returnButton" href="index.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
     <div class="flex-container">
         <h1>Liste des patients</h1>
+    </div>
+    <div class="searchContainer">
+        <h2>Rechercher un patient</h2>
+        <form id="searchForm" method="get" action="">
+            <input type="search" name="lastName" placeholder="Dupontel">
+            <input type="search" name="firstName" placeholder="Albert">
+            <input class="confirm" type="submit" value="rechercher">
+        </form>
     </div>
     <div class="tableContainer">
         <table>
@@ -36,6 +47,7 @@
                 </tr>
                 <?php
             } else {
+               if(!isset($_GET['firstName']) || !isset($_GET['lastName'])){
                 foreach ($patientsList as $client) {
                 ?>
                     <tr onclick="window.location='patientProfile.php?patient=<?= $client->id ?>'">
@@ -51,7 +63,23 @@
                         </form>
                     </tr>
             <?php }
-            } ?>
+            } else { 
+                foreach ($searchResults as $searchedClients) { ?>
+                <tr onclick="window.location='patientProfile.php?patient=<?= $searchedClients->id ?>'">
+                        <td><?= $searchedClients->lastname ?></td>
+                        <td><?= $searchedClients->firstname ?></td>
+                        <td><?= $searchedClients->birthdate ?></td>
+                        <td><a href="mailto:<?= $searchedClients->mail ?>"><?= $searchedClients->mail ?></a></td>
+                        <td><a href="tel:<?= $searchedClients->phone ?>"><?= $searchedClients->phone ?></a></td>
+                        <form method="post" action="patientsList.php">
+                            <td><input type="hidden" name="delete" value="<?= $searchedClients->id ?>">
+                                <button type="submit" id="deleteButton">-</button>
+                            </td>
+                        </form>
+                    </tr>
+             <?php }
+            }
+         } ?>
         </table>
     </div>
     <div class="buttonsContainer">

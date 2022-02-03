@@ -49,17 +49,6 @@ p {
     font-family: var(--main-font-family);
 }
 
-.returnButton {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    color: white;
-}
-
-.returnButton:hover {
-    color: var(--alternative-color);
-}
-
 .modifyButton {
     position: absolute;
     top: 2%;

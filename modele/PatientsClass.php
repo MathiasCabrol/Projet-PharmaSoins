@@ -138,6 +138,13 @@ class Patients
         return $queryStatement->execute();
     }
 
+    public function countPages() {
+        $query = 'SELECT COUNT(`id`)/10 AS `number` FROM `patients`';
+        $queryStatement = $this->db->query($query);
+        $numberOfPagesToRound = $queryStatement->fetch(PDO::FETCH_OBJ);
+        return $numberOfPagesToRound;
+    }
+
     public function setId (int $value):void {
         $this->id = $value;
     } 
