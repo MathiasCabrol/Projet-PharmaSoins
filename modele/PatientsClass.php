@@ -23,7 +23,6 @@ class Patients
         $this->birthdate = DateTime::createFromFormat('d/m/Y', $this->birthdate);
         $this->birthdate = $this->birthdate->format('Y-m-d');
     }
-
     public function addPatient(): bool
     {   
         $query = 'INSERT INTO ' . $this->table
@@ -75,12 +74,13 @@ class Patients
         return $queryStatement->execute();
     }
 
-    public function displayPatient()
-    {
-        $query = 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients`';
-        $queryStatement = $this->db->query($query);
-        $clientsList = $queryStatement->fetchAll(PDO::FETCH_OBJ);
-        return $clientsList;
+    public function displayPagePatients($page) {
+        $query = 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` ORDER BY `lastname` LIMIT :number, 10';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':number', ($page - 1) * 10, PDO::PARAM_INT);
+        $queryStatement->execute();
+        $patientsByPage = $queryStatement->fetchAll(PDO::FETCH_OBJ);
+        return $patientsByPage;
     }
 
     public function displayPatientProfile():bool {
@@ -107,6 +107,17 @@ class Patients
         $queryStatement = $this->db->prepare($query);
         $queryStatement->bindValue(':lastname', $lastName, PDO::PARAM_STR);
         $queryStatement->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+        $queryStatement->execute();
+        $searchResults = $queryStatement->fetchAll(PDO::FETCH_OBJ);
+        return $searchResults;
+    }
+
+    public function searchPatientByPage($lastName, $firstName, $page){
+        $query = 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`, `mail`, `phone` FROM `patients` WHERE `lastname` lIKE CONCAT("%", :lastname, "%") OR `firstname` LIKE CONCAT("%", :firstname, "%") ORDER BY `lastname` LIMIT :number, 10';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+        $queryStatement->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+        $queryStatement->bindValue(':number', ($page - 1) * 10, PDO::PARAM_INT);
         $queryStatement->execute();
         $searchResults = $queryStatement->fetchAll(PDO::FETCH_OBJ);
         return $searchResults;
@@ -143,6 +154,16 @@ class Patients
         $queryStatement = $this->db->query($query);
         $numberOfPagesToRound = $queryStatement->fetch(PDO::FETCH_OBJ);
         return $numberOfPagesToRound;
+    }
+
+    public function countPagesBySearch($lastName, $firstName) {
+        $query = 'SELECT COUNT(`id`)/10 AS `number` FROM `patients` WHERE `lastname` lIKE CONCAT("%", :lastname, "%") OR `firstname` LIKE CONCAT("%", :firstname, "%")';
+        $queryStatement = $this->db->prepare($query);
+        $queryStatement->bindValue(':lastname', $lastName, PDO::PARAM_STR);
+        $queryStatement->bindValue(':firstname', $firstName, PDO::PARAM_STR);
+        $queryStatement->execute();
+        $pagesBySearch = $queryStatement->fetch(PDO::FETCH_OBJ);
+        return $pagesBySearch;
     }
 
     public function setId (int $value):void {

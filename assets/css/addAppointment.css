@@ -34,6 +34,7 @@ cursor: pointer;
 .card {
     height: 100%;
     width: 30%;
+    margin-bottom: 30px;
 }
 
 @media (max-width: 767px) {

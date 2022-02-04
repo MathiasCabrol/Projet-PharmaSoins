@@ -1,6 +1,8 @@
 <?php 
+session_start();
 require '../controller/patient-list.php';
 require '../controller/patientsListSearch.php';
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -24,11 +26,18 @@ require '../controller/patientsListSearch.php';
     </div>
     <div class="searchContainer">
         <h2>Rechercher un patient</h2>
-        <form id="searchForm" method="get" action="">
+        <form id="searchForm" method="get" action="patientsList.php">
             <input type="search" name="lastName" placeholder="Dupontel">
             <input type="search" name="firstName" placeholder="Albert">
             <input class="confirm" type="submit" value="rechercher">
         </form>
+        <?php if (isset($_SESSION['firstName']) || isset($_SESSION['lastName'])) {
+?>
+        <form method="post" action="patientsList.php">
+            <input class="confirm" type="submit" value="annuler recherche" name="cancel">
+        </form>
+        <div id="results"><p><?= $countResults->results ?> résultats trouvés</p></div>
+        <?php } ?>
     </div>
     <div class="tableContainer">
         <table>
@@ -47,7 +56,7 @@ require '../controller/patientsListSearch.php';
                 </tr>
                 <?php
             } else {
-               if(!isset($_GET['firstName']) || !isset($_GET['lastName'])){
+               if(!isset($_SESSION['firstName']) || !isset($_SESSION['lastName'])){
                 foreach ($patientsList as $client) {
                 ?>
                     <tr onclick="window.location='patientProfile.php?patient=<?= $client->id ?>'">
@@ -82,9 +91,11 @@ require '../controller/patientsListSearch.php';
          } ?>
         </table>
     <div class="pagesContainer">
-        <form method="get" action="">
-            
-        </form>
+        <?php for($i = 1; $i <= ceil($patientsPages->number); $i++){ ?>
+            <form method="get" action="patientsList.php">
+                <input class="page" type="submit" value="<?= $i?>" name="page">
+            </form>
+        <?php } ?>
     </div>
     </div>
     <div class="buttonsContainer">

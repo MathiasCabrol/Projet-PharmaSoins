@@ -87,4 +87,31 @@ tr {
     padding: 0 5px;
 }
 
+#deleteButton:hover {
+    transform: scale(0.9);
+    background-color: rgb(155, 0, 0);
+}
+
+.pagesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20%;
+    margin-top: 20px;
+}
+
+.page {
+    border: none;
+    background: none;
+    color: var(--main-color);
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-size);
+    margin: 0 4px;
+}
+
+.page:hover {
+    text-decoration: underline;
+    color: var(--alternative-color);
+    cursor: pointer;
+}
 
