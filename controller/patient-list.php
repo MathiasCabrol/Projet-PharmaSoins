@@ -7,8 +7,6 @@ if(!isset($_GET['page'])){
     $patientsList = $patients->displayPagePatients(htmlspecialchars($_GET['page']));
 }
 
-$patientsPages = $patients->countPages();
-
 if(isset($_POST['delete'])){
     $patients->setId(htmlspecialchars($_POST['delete']));
     $patients->deletePatient();
