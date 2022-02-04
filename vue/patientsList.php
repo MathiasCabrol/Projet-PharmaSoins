@@ -2,7 +2,7 @@
 session_start();
 require '../controller/patient-list.php';
 require '../controller/patientsListSearch.php';
-var_dump($_SESSION);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
