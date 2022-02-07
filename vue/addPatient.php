@@ -1,5 +1,5 @@
-<?php 
-require '../controller/addPatientController.php';
+<?php
+require '../controller/addPatientAppointment.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -36,13 +36,24 @@ require '../controller/addPatientController.php';
             <label for="phone">Téléphone</label>
             <input placeholder="0645326735" type="text" name="phone" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '' ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['phone']) ? $errorlist['phone'] : '' ?></p>
+            <div class="radioContainer" id="radioContainer">
+                <div>
+                    <input type="radio" name="appo" id="yes" value="1">
+                    <label for="yes">&#10004</label>
+                </div>
+                <div>
+                    <input type="radio" name="appo" id="no" value="0" checked="checked">
+                    <label for="no">&#10007</label>
+                </div>
+            </div>
             <div>
                 <input class="confirm" type="submit" value="Confirmer" name="addPatient">
             </div>
             <p><?= isset($errorlist['addPatient']) ? $errolist['addPatient'] : '' ?></p>
         </form>
     </div>
-    
+
 </body>
+<script src="../assets/js/addAppointment.js"></script>
 
 </html>

@@ -166,6 +166,13 @@ class Patients
         return $pagesBySearch;
     }
 
+    public function selectLastAddedPatientId () {
+        $query = 'SELECT `id` FROM `patients` ORDER BY `id` DESC LIMIT 1';
+        $queryStatement = $this->db->query($query);
+        $lastPatientId = $queryStatement->fetch(PDO::FETCH_OBJ);
+        return $lastPatientId;
+    }
+
     public function setId (int $value):void {
         $this->id = $value;
     } 

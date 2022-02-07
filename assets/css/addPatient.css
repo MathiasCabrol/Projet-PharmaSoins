@@ -15,11 +15,11 @@
     align-items: center;
 }
 
-.colContainer > input {
+.colContainer input {
     margin-top: 5px;
 }
 
-.colContainer > input {
+.colContainer input {
     border: none;
     border-bottom: 1px solid var(--main-color);
     padding-bottom: 5px;
@@ -74,4 +74,18 @@
 
 .returnButton:hover {
     color: var(--alternative-color);
+}
+
+.radioContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 180px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+}
+
+#dateHour {
+    margin-top: 26px;
 }
