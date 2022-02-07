@@ -19,19 +19,19 @@
     <div class="cardsContainer">
         <div class="card patient">
             <h3>Ajouter un patient</h3>
-            <a href="addPatient.php"><button>+</button></a>
+            <button onclick="window.location='addPatient.php'">+</button>
         </div>
         <div class="card">
             <h3>Liste des patients</h3>
-            <a href="patientsList.php"><button>Consulter</button></a>
+            <button onclick="window.location='patientsList.php'">Consulter</button>
         </div>
         <div class="card">
             <h3>Ajouter un rendez-vous</h3>
-            <a href="addAppointment.php"><button>+</button></a>
+            <button onclick="window.location='addAppointment.php'">+</button>
         </div>
         <div class="card">
             <h3>Liste des rendez-vous</h3>
-            <a href="appointmentsList.php"><button>Consulter</button></a>
+            <button onclick="window.location='appointmentsList.php'">Consulter</button>
         </div>
     </div>
 </body>

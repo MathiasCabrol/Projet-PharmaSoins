@@ -99,7 +99,7 @@ require '../controller/patientsListSearch.php';
     </div>
     </div>
     <div class="buttonsContainer">
-        <a href="addPatient.php"><button>Ajouter patient</button></a>
+        <button onclick="window.location='addPatient.php'">Ajouter patient</button>
     </div>
 </body>
 

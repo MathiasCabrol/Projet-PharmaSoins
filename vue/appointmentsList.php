@@ -58,7 +58,7 @@
         </table>
     </div>
     <div class="buttonsContainer">
-        <a href="addAppointment.php"><button>Ajouter rdv</button></a>
+        <button onclick="window.location='addAppointment.php'">Ajouter rdv</button>
     </div>
 </body>
 
