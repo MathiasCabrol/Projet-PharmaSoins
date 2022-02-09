@@ -18,7 +18,7 @@ class Appointments {
         }
     }
 
-    public function addAppointment() {
+    public function addAppointment():bool {
         $query = 'INSERT INTO `appointments` (`dateHour`, `idPatients`) VALUES (:datehour, :idPatients)';
         $queryStatement = $this->db->prepare($query);
         $queryStatement->bindValue(':datehour', $this->dateHour, PDO::PARAM_STR);
