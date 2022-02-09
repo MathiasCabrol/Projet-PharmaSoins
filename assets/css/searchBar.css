@@ -19,11 +19,21 @@
 
 .searchContainer {
     display: flex;
+    flex-wrap: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: var(--main-font-family);
     margin-top: 70px;
+}
+
+@media (max-width: 768px) {
+    .searchContainer input {
+        width: 32%;
+    }
+    #searchForm input {
+        width: 32%;
+    }
 }
 
 .confirm {
