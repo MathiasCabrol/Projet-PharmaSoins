@@ -1,7 +1,5 @@
 <?php
 require '../controller/patient-profile.php';
-var_dump($appointmentsList);
-var_dump(empty($appointmentsList));
 ?>
 
 
