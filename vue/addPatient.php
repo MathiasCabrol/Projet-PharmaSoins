@@ -1,5 +1,5 @@
 <?php
-require '../controller/addPatientAppointment.php';
+require 'controller/addPatientAppointment.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -20,7 +20,7 @@ require '../controller/addPatientAppointment.php';
         <h1>Ajout de patient</h1>
     </div>
     <div class="formContainer">
-        <form class="colContainer" method="post" action="addPatient.php">
+        <form class="colContainer" method="post" action="index.php?action=addPatient">
             <label for="lastname">Nom de famille</label>
             <input placeholder="Dupont" type="text" name="lastname" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>">
             <p><?= isset($_POST['addPatient']) && isset($errorlist['lastname']) ? $errorlist['lastname'] : '' ?></p>
@@ -54,6 +54,6 @@ require '../controller/addPatientAppointment.php';
     </div>
 
 </body>
-<script src="../assets/js/addAppointment.js"></script>
+<script src="assets/js/addAppointment.js"></script>
 
 </html>

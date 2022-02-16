@@ -1,12 +1,6 @@
-#------------------------------------------------------------
-#        Script MySQL.
-#------------------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `hospitalE2N` CHARACTER SET 'utf8';
-USE `hospitalE2N`;
 
-#------------------------------------------------------------
-# Table: patients
-#------------------------------------------------------------
+USE `c2pharmasoins`;
+
 
 CREATE TABLE IF NOT EXISTS `patients`(
         `id`        INT (11) AUTO_INCREMENT  NOT NULL ,
@@ -17,11 +11,6 @@ CREATE TABLE IF NOT EXISTS `patients`(
         `mail`      VARCHAR (100) NOT NULL ,
         PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: appointments
-#------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `appointments`(
         `id`         INT (11) AUTO_INCREMENT  NOT NULL ,

@@ -38,4 +38,4 @@ if (!isset($_SESSION['firstName']) || !isset($_SESSION['lastName'])) {
     $patientsPages = $patients->countPagesBySearch($lastname, $firstname);
 }
 
-require '../controller/searchBar.php';
+require 'controller/searchBar.php';

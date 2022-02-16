@@ -1,5 +1,5 @@
 <?php
-require '../controller/patient-profile.php';
+require 'controller/patient-profile.php';
 ?>
 
 
@@ -18,8 +18,8 @@ require '../controller/patient-profile.php';
 </head>
 
 <body>
-    <?php if ($checkIfIdExist) { ?>
-        <a class="returnButton" href="patientsList.php"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
+    <?php if (isset($checkIfIdExist) && $checkIfIdExist) { ?>
+        <a class="returnButton" href="index.php?action=patientsList"><i class="fas fa-chevron-circle-left fa-3x"></i></a>
         <div class="flex-container">
             <h1>Profil patient</h1>
         </div>
@@ -55,7 +55,7 @@ require '../controller/patient-profile.php';
                             <i class="fas fa-undo fa-2x"></i>
                         </button>
                     </form>
-                    <form class="colContainer" method="post" action="">
+                    <form class="colContainer" method="post" action="index.php?action=patientProfile&patient=<?= $_GET['patient'] ?>">
                         <label for="lastname">Nom de famille</label>
                         <input placeholder="Dupont" type="text" name="lastname" value="<?= $patients->getLastname() ?>">
                         <p><?= isset($_POST['addPatient']) && isset($errorlist['lastname']) ? $errorlist['lastname'] : '' ?></p>
@@ -97,7 +97,7 @@ require '../controller/patient-profile.php';
         <div id="errorContainer">
             <div class="innerContainer">
             <p id="errorText">Une erreur s'est produite, Veuillez contacter l'assistance pour plus d'informations</p>
-            <a id="errorLink" href="patientsList.php">Retour à la liste des patients</a>
+            <a id="errorLink" href="index.php?action=patientsList">Retour à la liste des patients</a>
             </div>
         </div>
     <?php } ?>

@@ -1,6 +1,6 @@
 <?php
-require '../controller/appointment.php';
-require '../controller/addAppointment.php';
+require 'controller/appointment.php';
+require 'controller/addAppointment.php';
 
 ?>
 

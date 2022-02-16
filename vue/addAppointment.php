@@ -3,8 +3,8 @@
 //Création de session pour sauvegarde des POST
 session_start();
 
-require '../controller/appointmentSearchBar.php';
-require '../controller/addAppointment.php';
+require 'controller/appointmentSearchBar.php';
+require 'controller/addAppointment.php';
 
 ?>
 
@@ -47,7 +47,7 @@ require '../controller/addAppointment.php';
         <!-- Affichage de la liste des patients recherchés si le formulaire a été envoyé -->
         <?php if ((isset($_SESSION['searchLastName']) || isset($_SESSION['searchFirstName'])) && (!isset($_POST['searchFirstName']) || !isset($_POST['searchLastName']))) {
         ?>
-            <?php if (isset($_GET['patient'])) {
+            <?php if (isset($_POST['patient'])) {
                 foreach ($appointmentForm as $selectedPatient) {
             ?>
                 <div class="card patient appoCard">
@@ -76,7 +76,7 @@ require '../controller/addAppointment.php';
                 <p><?= $results->birthdate ?></p>
                 <p><?= $results->phone ?></p>
                 <p><?= $results->mail ?></p>
-                <form method="get" action="">
+                <form method="post" action="index.php?action=addAppointment">
                     <input type="hidden" name="patient" value="<?= $results->id ?>"><button class="confirm" type="submit">+</button>
                 </form>
             </div>

@@ -1,7 +1,7 @@
 <?php
 
-require '../modele/PatientsClass.php';
-require '../modele/Appointments.php';
+require 'modele/PatientsClass.php';
+require 'modele/Appointments.php';
 
 require 'form-verif.php';
 

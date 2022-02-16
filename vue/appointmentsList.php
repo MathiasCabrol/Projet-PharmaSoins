@@ -1,4 +1,4 @@
-<?php require '../controller/appointments-list.php';
+<?php require 'controller/appointments-list.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -41,13 +41,13 @@
                 } else {
                 foreach ($appointmentsList as $appointment){
                     ?>
-                <tr onclick="window.location='appointment.php?appointment=<?= $appointment->id ?>&patient=<?= $appointment->patientId ?>'">
+                <tr onclick="window.location='index.php?action=appointment&appointment=<?= $appointment->id ?>&patient=<?= $appointment->patientId ?>'">
                     <td><?= date("d/m/Y",strtotime($appointment->dateHour)) ?></td>
                     <td><?= date("H:i:s",strtotime($appointment->dateHour)) ?></td>
                     <td><?= $appointment->lastname ?></td>
                     <td><?= $appointment->firstname ?></td>
                     <td><?= $appointment->phone ?></td>
-                    <form method="post" action="appointmentsList.php">
+                    <form method="post" action="index.php?action=appointmentsList">
                     <td><input type="hidden" name="delete" value="<?= $appointment->id ?>">    
                     <button type="submit" id="deleteButton">-</button></td>    
                     </form>
@@ -58,7 +58,7 @@
         </table>
     </div>
     <div class="buttonsContainer">
-        <button onclick="window.location='addAppointment.php'">Ajouter rdv</button>
+        <button onclick="window.location='index.php?action=addAppointment'">Ajouter rdv</button>
     </div>
 </body>
 

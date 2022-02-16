@@ -1,7 +1,7 @@
 <?php
 
-require '../modele/PatientsClass.php';
-require '../modele/Appointments.php';
+require 'modele/PatientsClass.php';
+require 'modele/Appointments.php';
 
 /**
  * Création des REGEX pour les formulaires
@@ -103,7 +103,7 @@ if (isset($_POST['addPatient'])) {
                 $appointments->setDateHour($appointmentDateHour);
                 $appointments->addAppointment();
             }
-            header('location: patientsList.php');
+            header('location: index.php?action=patientsList');
             exit;
         } else {
             $errorlist['addPatient'] = 'Ce patient existe déjà';

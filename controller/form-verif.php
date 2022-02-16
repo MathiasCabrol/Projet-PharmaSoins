@@ -79,11 +79,11 @@ if(isset($_POST['addPatient'])){
         if (!$patient->checkPatientIfExists()) {
             if(!isset($_GET['patient'])){
                 $patient->addPatient();
-                header('location: patientsList.php');
+                header('location: index.php?action=patientsList');
             } else {
                 $patient->setId(htmlspecialchars($_GET['patient']));
                 $patient->updatePatient();
-                header('location: patientProfile.php?patient=' . htmlspecialchars($_GET['patient']));
+                header('location: index.php?action=patientProfile&patient=' . htmlspecialchars($_GET['patient']));
             }
             exit;
         }else{

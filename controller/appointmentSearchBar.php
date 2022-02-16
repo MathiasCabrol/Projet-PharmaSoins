@@ -1,6 +1,6 @@
 <?php
-require '../modele/PatientsClass.php';
-require '../modele/Appointments.php';
+require 'modele/PatientsClass.php';
+require 'modele/Appointments.php';
 $patients = new Patients;
 
 
@@ -27,12 +27,12 @@ if (!empty($_SESSION['searchFirstName'])){
     $firstname = null;
 }
 
-require '../controller/searchBar.php';
+require 'controller/searchBar.php';
 
 //Si le bouton d'ajout de rendez-vous est cliquée, affiche les informations du patient
 // En initialisant la variable patientId
-if(isset($_GET['patient'])){
-    $patients->setId($_GET['patient']);
+if(isset($_POST['patient'])){
+    $patients->setId($_POST['patient']);
     $appointmentForm = $patients->displaySelectedAppointmentForm();
 }
 

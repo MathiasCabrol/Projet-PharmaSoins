@@ -1,4 +1,4 @@
-<?php require '../modele/Appointments.php';
+<?php require 'modele/Appointments.php';
 
 $appointments = new Appointments;
 
